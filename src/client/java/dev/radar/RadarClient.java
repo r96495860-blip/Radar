@@ -52,6 +52,9 @@ public final class RadarClient implements ClientModInitializer {
 		}
 
 		if (target == highlightedPlayer) {
+			if (target != null) {
+				target.setGlowingTag(true);
+			}
 			return;
 		}
 
