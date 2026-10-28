@@ -1,5 +1,8 @@
 package dev.radar;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
@@ -18,26 +21,26 @@ public final class RadarClient implements ClientModInitializer {
 		)
 	);
 
-	private static String targetName = "";
+	private static final Set<String> targetNames = new LinkedHashSet<>();
 
 	@Override
 	public void onInitializeClient() {
 		ClientTickEvents.END_CLIENT_TICK.register(client -> {
 			while (OPEN_MENU_KEY.consumeClick()) {
-				client.setScreen(new TargetScreen(targetName));
+				client.setScreen(new TargetScreen(targetNames));
 			}
 		});
 	}
 
-	static void setTargetName(String name) {
-		targetName = name.trim();
+	static void setTargets(Set<String> names) {
+		targetNames.clear();
+		targetNames.addAll(names);
 	}
 
 	public static boolean isTarget(Player player) {
 		Minecraft client = Minecraft.getInstance();
 		return client.player != null
 			&& player != client.player
-			&& !targetName.isBlank()
-			&& player.getGameProfile().name().equalsIgnoreCase(targetName);
+			&& targetNames.stream().anyMatch(name -> player.getGameProfile().name().equalsIgnoreCase(name));
 	}
 }

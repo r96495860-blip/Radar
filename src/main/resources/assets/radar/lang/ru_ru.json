@@ -1,8 +1,16 @@
 {
   "key.categories.radar.main": "Radar",
   "key.radar.open_menu": "Открыть меню подсветки",
-  "screen.radar.title": "Подсветка игрока",
-  "screen.radar.player_name": "Ник игрока",
+  "screen.radar.title": "Радар игроков",
+  "screen.radar.subtitle": "Выберите игроков для красной обводки",
+  "screen.radar.search": "Поиск игрока",
+  "screen.radar.search_hint": "Введите ник...",
+  "screen.radar.add": "Добавить",
+  "screen.radar.clear": "Очистить",
+  "screen.radar.selected": "Выбрано: %s",
+  "screen.radar.empty": "Игроки не найдены",
+  "screen.radar.offline": "не в мире",
+  "screen.radar.scroll": "%s / %s",
   "screen.radar.apply": "Применить",
   "screen.radar.cancel": "Отмена"
 }
