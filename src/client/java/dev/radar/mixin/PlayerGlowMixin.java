@@ -20,7 +20,7 @@ public abstract class PlayerGlowMixin {
 	@Inject(method = "getTeamColor", at = @At("HEAD"), cancellable = true)
 	private void radar$setTargetOutlineColor(CallbackInfoReturnable<Integer> callback) {
 		if ((Object) this instanceof Player player && RadarClient.isTarget(player)) {
-			callback.setReturnValue(0xFF3030);
+			callback.setReturnValue(RadarClient.getOutlineColor(player));
 		}
 	}
 }
